@@ -1,0 +1,116 @@
+﻿<local:BasePage x:TypeArguments="core:InitScriptViewModel" x:Class="AdTool.InitScriptPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdTool"
+      xmlns:core="clr-namespace:AdTool.Core;assembly=AdTool.Core"
+      mc:Ignorable="d"       
+      x:Name="Page"
+      xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+      d:DesignHeight="500" d:DesignWidth="415"
+      >
+    <Border Background="{StaticResource ForegroundLightBrush}" 
+                        Margin="1 1 0 0">
+        <!--load event-->
+        <intr:Interaction.Triggers>
+            <intr:EventTrigger EventName="Loaded">
+                <intr:InvokeCommandAction Command="{Binding PageLoadedCommand}"/>
+            </intr:EventTrigger>
+        </intr:Interaction.Triggers>
+
+        <!--objectstorage page-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--title-->
+            <Grid Grid.Row="0" Margin="15 15 15 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Grid.Column="1" Text="- Config > InitScript Setting and Upload"
+                        FontFamily="{StaticResource RobotoMedium}"
+                        FontSize="{StaticResource FontSizeRegular}"
+                        Foreground="{StaticResource ForegroundMainBrush}"
+                        HorizontalAlignment="Left"
+                        Margin="0 0 0 15"/>
+                    <Border Grid.Row="1" Background="{StaticResource WordLightGrayBrush}"
+                        CornerRadius="5"
+                        Padding="10"
+                        Margin="0 0 0 15">
+                        <TextBlock 
+                            Text="Write the name of the server agent folder. You do not need to change it, and you only need to upload once. The initialization script goes up to object storage, and the object storage setup must be done before uploading." 
+                            FontSize="{StaticResource FontSizeSmall}" 
+                            Foreground="{StaticResource ForegroundMainBrush}"
+                            TextWrapping="Wrap"
+                            TextAlignment="Left"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+            <!--contents-->
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <GroupBox
+                    Header="Setting"
+                    Margin="15 0 15 15"
+                    VerticalAlignment="Top">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                            <!--agentfolder-->
+                            <Grid Grid.Row="0" Margin="10 0 10 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2"/>
+                                    <ColumnDefinition Width="10"/>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="{StaticResource ForegroundDarkBrush}" Height="2"/>
+                                <Border Grid.Column="1"/>
+                                <TextBlock Grid.Column="2" Text="Agent Folder" VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="3" 
+                                     Text="{Binding AgentFolder, UpdateSourceTrigger=PropertyChanged}"
+                                     Style="{StaticResource TextBoxSmall}" 
+                                     Height="32"/>
+                            </Grid>
+                            <!--button-->
+                            <Grid Grid.Row="1" VerticalAlignment="Top" Margin="0 5 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Button 
+                                    Grid.Column="1" 
+                                    Content="Upload" 
+                                    local:IsBusyProperty.Value="{Binding UploadIsRunning}"
+                                    Command="{Binding UploadCommand}" 
+                                    CommandParameter="{Binding ElementName=Page}" 
+                                    Height="32" 
+                                    Width="100"
+                                    Margin="0 10 5 10"
+                                />
+                                <Button 
+                                    Content="Verify" 
+                                    local:IsBusyProperty.Value="{Binding VerifyIsRunning}"
+                                    Command="{Binding VerifyCommand}" 
+                                    CommandParameter="{Binding ElementName=Page}" 
+                                    Grid.Column="2" 
+                                    Height="32" 
+                                    Width="100"
+                                    Margin="5 10 10 10"
+                                />
+                            </Grid>
+                    </Grid>
+                </GroupBox>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+
+</local:BasePage>

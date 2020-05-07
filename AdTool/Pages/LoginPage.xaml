@@ -1,0 +1,104 @@
+﻿<local:BasePage x:TypeArguments="core:LoginViewModel" x:Class="AdTool.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AdTool"
+      xmlns:core="clr-namespace:AdTool.Core;assembly=AdTool.Core"                
+      mc:Ignorable="d"       
+      x:Name="Page"
+      xmlns:intr="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+      d:DesignHeight="370" d:DesignWidth="415">
+    <Grid>
+
+        <intr:Interaction.Triggers>
+            <intr:EventTrigger EventName="Loaded">
+                <intr:InvokeCommandAction Command="{Binding PageLoadedCommand}"/>
+            </intr:EventTrigger>
+        </intr:Interaction.Triggers>
+        
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        TextBlock.TextAlignment="Center">
+                <Border Background="{StaticResource ForegroundLightBrush}"
+                        CornerRadius="10"
+                        Padding="10 10 10 10"
+                        Width="350"
+                        Margin="10 10 10 10">
+                    <StackPanel>
+                        <TextBlock Text="Sign In"
+                            FontFamily="{StaticResource RobotoMedium}"
+                            FontSize="{StaticResource FontSizeLarge}"
+                            Foreground="{StaticResource WordBlueBrush}"/>
+                        <TextBlock Text="Select the connection type and enter the API Key"
+                            FontSize="{StaticResource FontSizeSmall}"
+                            Foreground="{StaticResource ForegroundDarkBrush}"
+                            FontFamily="{StaticResource RobotoLight}"
+                            Margin="0 10 0 15"/>
+
+
+                        <GroupBox Header="Connection Type" Margin="0 5 0 5">
+                            <StackPanel Orientation="Vertical" Margin="5">
+                                <RadioButton Grid.Column="2" 
+                                    Grid.ColumnSpan="2" 
+                                    Margin="5"
+                                    VerticalAlignment="Center" 
+                                    GroupName="AuthenticationType" 
+                                    Name="LoginTypeDefault"
+                                    Content="Public (www.ncloud.com)"
+                                    IsChecked="{Binding LoginTypeDefault}"
+                                    Command="{Binding LoginTypeChangeCommand}"
+                                    CommandParameter="{Binding ElementName=LoginTypeDefault, Path=Name}"/>
+                                <RadioButton Grid.Column="2" 
+                                    Grid.ColumnSpan="2"  
+                                    Margin="5"
+                                    VerticalAlignment="Center" 
+                                    Name="LoginTypeGov"
+                                    GroupName="AuthenticationType" 
+                                    Content="Gov (www.gov-ncloud.com)"
+                                    IsChecked="{Binding LoginTypeGov}"
+                                    Command="{Binding LoginTypeChangeCommand}"
+                                    CommandParameter="{Binding ElementName=LoginTypeGov, Path=Name}"/>
+                            </StackPanel>
+                        </GroupBox>
+
+
+                        <TextBox Text="{Binding AccessKey}" 
+                            Tag="AccessKey"
+                            Style="{StaticResource BaseTextBox}"
+                            local:IsFocusedProperty.Value="True"/>  
+                        
+                        <PasswordBox local:PasswordHelper.Attach="True"
+                            local:PasswordHelper.Password="{Binding Path=SecretKey}"
+                            Style="{StaticResource BasePasswordBox}"
+                            Tag="SecretKey" x:Name="PasswordText"/>
+                        <CheckBox Content="Save" 
+                            IsChecked="{Binding IsSave}"
+                            Margin="0,3,0,10" 
+                            HorizontalAlignment="Right" 
+                            VerticalContentAlignment="Top" 
+                            FontFamily="{StaticResource RobotoLight}" 
+                            Foreground="{StaticResource ForegroundMainBrush}"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="Login"
+                                IsDefault="True"
+                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
+                                Command="{Binding LoginCommand}"  
+                                CommandParameter="{Binding ElementName=Page}" 
+                                HorizontalAlignment="Center" Margin="0 0 5 5" Height="32" Width="100"/>
+                            <Button Content="Cancel"
+                                Style="{StaticResource WhiteButton}"
+                                Command="{Binding CancelCommand}"  
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                                HorizontalAlignment="Center" Margin="5 0 0 5" Height="32" Width="100"/>                            
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+
+</local:BasePage>
+    

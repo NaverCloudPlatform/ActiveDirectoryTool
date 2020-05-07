@@ -1,0 +1,27 @@
+﻿<local:BaseDialogUserControl x:Class="AdTool.DialogMessageBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdTool"
+             xmlns:core="clr-namespace:AdTool.Core;assembly=AdTool.Core"
+             mc:Ignorable="d">
+    <StackPanel 
+        d:DataContext="{x:Static core:MessageBoxDialogDesignModel.Instance}" 
+        Background="{StaticResource ForegroundLightBrush}">
+        
+        <TextBlock HorizontalAlignment="Center" Text="{Binding Message}"
+            Padding="5"
+            Foreground="{StaticResource ForegroundVeryDarkBrush}"/>
+
+        <Button Content="{Binding OkText}"
+            IsDefault="True"
+            Height="32"
+            IsCancel="True"
+            FontFamily="{StaticResource RobotoMedium}"
+            FontSize="{StaticResource FontSizeRegular}"
+            Command="{Binding CloseCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:BaseDialogUserControl}}}"
+            HorizontalAlignment="Center"/>
+        
+    </StackPanel>
+</local:BaseDialogUserControl>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.2.5\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.2.5\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C70D361-29E4-475E-86F0-2E1D91E4F388}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdTool.Core</RootNamespace>
+    <AssemblyName>AdTool.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=3.2.5.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.2.5\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataModel\ApplicationPage.cs" />
+    <Compile Include="DataModel\LoginType.cs" />
+    <Compile Include="DataModel\DialogResult.cs" />
+    <Compile Include="DataModel\ElementHorizontalAlignment.cs" />
+    <Compile Include="Config\DataManager.cs" />
+    <Compile Include="DataModel\HaModels.cs" />
+    <Compile Include="DataModel\Models.cs" />
+    <Compile Include="DataModel\SideMenuContent.cs" />
+    <Compile Include="DataModel\TBL_CLUSTER_KEY.cs" />
+    <Compile Include="DataModel\TBL_CLUSTER_SERVER_KEY.cs" />
+    <Compile Include="DataModel\TBL_CLUSTER_SERVER_VALUE.cs" />
+    <Compile Include="DataModel\TBL_CLUSTER_VALUE.cs" />
+    <Compile Include="DataModel\TBL_SERVER_KEY.cs" />
+    <Compile Include="DataModel\TBL_SERVER_VALUE.cs" />
+    <Compile Include="Expressions\ExpressionHelpers.cs" />
+    <Compile Include="FileDb\FileDb.cs" />
+    <Compile Include="IoC\Interface\IUIManager.cs" />
+    <Compile Include="IoC\Base\IoC.cs" />
+    <Compile Include="IWindowFacade.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IHavePassword.cs" />
+    <Compile Include="Security\SecureStringHelpers.cs" />
+    <Compile Include="ViewModel\ApplicationViewModel.cs" />
+    <Compile Include="ViewModel\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Base\RelayCommand.cs" />
+    <Compile Include="ViewModel\Base\RelayParameterizedCommand.cs" />
+    <Compile Include="ViewModel\Config\ConfigCheckViewModel.cs" />
+    <Compile Include="ViewModel\Config\InitScriptViewModel.cs" />
+    <Compile Include="ViewModel\Config\LoginKeyViewModel.cs" />
+    <Compile Include="ViewModel\Config\ObjectStorageViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\Design\MessageBoxDialogConfirmDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\MessageBoxDialogConfirmViewModel.cs" />
+    <Compile Include="ViewModel\Server\CreateIpViewModel.cs" />
+    <Compile Include="ViewModel\Server\ServerOperation.cs" />
+    <Compile Include="ViewModel\Server\SetAdGroupViewModel.cs" />
+    <Compile Include="ViewModel\Server\SetAgentKeyViewModel.cs" />
+    <Compile Include="ViewModel\Server\SetAdSecondaryViewModel.cs" />
+    <Compile Include="ViewModel\Server\SetAdPrimaryViewModel.cs" />
+    <Compile Include="ViewModel\Server\CreateServerViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ConfigList\ConfigListItemViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ConfigList\ConfigListViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ConfigList\Design\ConfigListDesignModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ConfigList\Design\ConfigListitemDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\BaseDialogViewModel.cs" />
+    <Compile Include="ViewModel\Dialogs\Design\MessageBoxDialogDesignModel.cs" />
+    <Compile Include="ViewModel\Dialogs\MessageBoxDialogViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ServerList\ServerListViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ServerList\ServerListItemViewModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ServerList\Design\ServerListDesignModel.cs" />
+    <Compile Include="ViewModel\SideMenu\ServerList\Design\ServerListItemDesignModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\Upload\Lazylog64.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CsLib\CsLib.csproj">
+      <Project>{7201ab9e-74f8-42ea-8d23-dceb652ef77d}</Project>
+      <Name>CsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogClient\LogClient.csproj">
+      <Project>{7c90937f-7719-423c-b0db-449af5f5f135}</Project>
+      <Name>LogClient</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\DataManagerContentsInit.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.6.0.8\build\Fody.targets" Condition="Exists('..\packages\Fody.6.0.8\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.6.0.8\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.0.8\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.2.5\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.2.5\build\PropertyChanged.Fody.props'))" />
+  </Target>
+</Project>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="AdTool.SideMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdTool"
+             xmlns:core="clr-namespace:AdTool.Core;assembly=AdTool.Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="300">
+
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+
+            <Border>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Height="50" Background="Transparent">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Button 
+                            Style="{StaticResource IconCreateAdServerButton}" 
+                            Content="{StaticResource FontAwesomeServerIcon}"
+                            Command="{Binding OpenServerCommand}"
+                            Width="180"
+                            HorizontalAlignment="Left"
+                            />
+                        <Button Grid.Column="2" 
+                                Style="{StaticResource IconCogButton}"                                 
+                                Content="{StaticResource FontAwesomeCogIcon}"
+                                Command="{Binding OpenConfigCommand}"/>
+                    </Grid>
+                    <Border Background="{StaticResource ForegroundLightBrush}" Grid.Row="1">
+                        <ContentPresenter />
+                    </Border>
+                </Grid>
+            </Border>
+
+        </ControlTemplate>
+    </UserControl.Template>
+
+
+</UserControl>

@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:AdTool"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <FontFamily x:Key="FontAwesome">pack://application;,,,/Fonts/#Font Awesome 5 Free Solid</FontFamily>
+
+    <FontFamily x:Key="RobotoBlack">pack://application;,,,/Fonts/#Roboto Black</FontFamily>
+    <FontFamily x:Key="RobotoBlackItalic">pack://application;,,,/Fonts/#Roboto Black Italic</FontFamily>
+    <FontFamily x:Key="RobotoBold">pack://application;,,,/Fonts/#Roboto Bold</FontFamily>
+    <FontFamily x:Key="RobotoBoldItalic">pack://application;,,,/Fonts/#Roboto Bold Italic</FontFamily>
+    <FontFamily x:Key="RobotoItalic">pack://application;,,,/Fonts/#Roboto Italic</FontFamily>
+    <FontFamily x:Key="RobotoLight">pack://application;,,,/Fonts/#Roboto Light</FontFamily>
+    <FontFamily x:Key="RobotoLightItalic">pack://application;,,,/Fonts/#Roboto Light Italic</FontFamily>
+    <FontFamily x:Key="RobotoMedium">pack://application;,,,/Fonts/#Roboto Medium</FontFamily>
+    <FontFamily x:Key="RobotoMediumItalic">pack://application;,,,/Fonts/#Roboto Medium Italic</FontFamily>
+    <FontFamily x:Key="RobotoRegular">pack://application;,,,/Fonts/#Roboto Regular</FontFamily>
+    <FontFamily x:Key="RobotoThin">pack://application;,,,/Fonts/#Roboto Thin</FontFamily>
+    <FontFamily x:Key="RobotoThinItalic">pack://application;,,,/Fonts/#Roboto Thin Italic</FontFamily>
+
+    <!--https://fontawesome.com/cheatsheet?from=io-->
+    <Style TargetType="{x:Type Control}" x:Key="BaseStyle">
+        <Setter Property="FontFamily" Value="{StaticResource RobotoLight}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}" x:Key="BaseTextBlockStyle">
+        <Setter Property="FontFamily" Value="{StaticResource RobotoLight}"/>
+    </Style>
+    
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource BaseStyle}"/>
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource BaseTextBlockStyle}" />
+    <!--개체 브라우저를 열기 위해 ctrl alt j 를 클릭하고 찾아보기에서 TextBlock 을 친다.-->
+
+    <system:Double x:Key="FontSizeSmaller">10</system:Double>
+    <system:Double x:Key="FontSizeSmall">12</system:Double>
+    <system:Double x:Key="FontSizeRegular">14</system:Double>
+    <system:Double x:Key="FontSizeLarge">20</system:Double>
+    <system:Double x:Key="FontSizeXLarge">24</system:Double>
+    <system:Double x:Key="FontSizeXXLarge">30</system:Double>
+
+    <system:String x:Key="FontAwesomeChatIcon">&#xf51c;</system:String>
+    <system:String x:Key="FontAwesomeUserIcon">&#xf02d;</system:String>
+    <system:String x:Key="FontAwesomePictureIcon">&#xf381;</system:String>
+    <system:String x:Key="FontAwesomeCogIcon">&#xf013;</system:String>
+    <system:String x:Key="FontAwesomeEllipsisIcon">&#xf142;</system:String>
+    <system:String x:Key="FontAwesomeSearchIcon">&#xf002;</system:String>
+    <system:String x:Key="FontAwesomePaperClipIcon">&#xf0c6;</system:String>
+    <system:String x:Key="FontAwesomeEmojiIcon">&#xf118;</system:String>
+    <system:String x:Key="FontAwesomeServerIcon">&#xf233;</system:String>
+
+    <system:String x:Key="FontAwesomeWindowRestoreIcon">&#xf2d2;</system:String>
+    <system:String x:Key="FontAwesomeWindowMinimizeIcon">&#xf2d1;</system:String>
+    <system:String x:Key="FontAwesomeWindowCloseIcon">&#xf410;</system:String>
+    <!--<system:String x:Key="FontAwesomeWindowCloseIcon">&#xf00d;</system:String>-->
+
+</ResourceDictionary>
